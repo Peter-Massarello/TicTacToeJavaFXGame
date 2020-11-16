@@ -4,28 +4,56 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.text.Font;
 
 public class BorderPaneMenus {
 
     public static HBox topMenu(){
         HBox topMenu = new HBox();
         Label title = new Label();
-
         title.setText("TIC-TAC-TOE");
         title.setAlignment(Pos.CENTER_LEFT);
-        topMenu.getChildren().add(title);
+
+        Region region1 = new Region();
+        HBox.setHgrow(region1, Priority.ALWAYS);
+
+        Region region2 = new Region();
+        HBox.setHgrow(region2, Priority.ALWAYS);
+
+
+
+        topMenu.getChildren().addAll(region1, title, region2);
 
         return topMenu;
 
     }
+
+    public static HBox bottomMenu(){
+        HBox bottomMenu = new HBox();
+        Label title = new Label();
+        title.setText("Current Players turn: ");
+        title.setAlignment(Pos.CENTER_LEFT);
+
+        Region region1 = new Region();
+        HBox.setHgrow(region1, Priority.ALWAYS);
+
+        Region region2 = new Region();
+        HBox.setHgrow(region2, Priority.ALWAYS);
+
+
+
+        bottomMenu.getChildren().addAll(region1, title, region2);
+
+        return bottomMenu;
+
+    }
+
     public static VBox leftMenu(){
         VBox leftMenu = new VBox();
         Label player1 = new Label();
         player1.setText("Player 1 Score");
-        player1.setAlignment(Pos.CENTER);
+        player1.minWidthProperty().bind(leftMenu.widthProperty());
         leftMenu.getChildren().add(player1);
 
         return leftMenu;
@@ -35,16 +63,16 @@ public class BorderPaneMenus {
         VBox rightMenu = new VBox();
         Label player2 = new Label();
         player2.setText("Player 2 Score");
-        player2.setAlignment(Pos.CENTER);
+        player2.minWidthProperty().bind(rightMenu.widthProperty());
         rightMenu.getChildren().add(player2);
 
         return rightMenu;
     }
 
-    public static GridPane mainGrid(){
+    public static GridPane mainGrid(BorderPane mainPane){
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
-        grid.setPadding(new Insets(10, 10, 10, 10));
+        grid.setPadding(new Insets(100, 100, 100, 100));
         grid.setVgap(8);
         grid.setHgap(10);
 
@@ -52,6 +80,10 @@ public class BorderPaneMenus {
             for (int j = 0; j < 3; j++){
                 Button btn = new Button("" + i);
                 btn.setOnAction(e -> System.out.print("Works"));
+                btn.prefWidthProperty().bind(grid.widthProperty());
+                btn.prefHeightProperty().bind(grid.heightProperty());
+                /*btn.setMinWidth(mainPane.getMaxWidth()/3);
+                btn.setMinHeight(mainPane.getMaxHeight()/3);*/
                 GridPane.setConstraints(btn, i, j);
                 grid.getChildren().add(btn);
             }

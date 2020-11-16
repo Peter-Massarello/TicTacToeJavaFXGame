@@ -3,7 +3,10 @@
     -fx-padding: 40;
     -fx-background-color: white;
 }
+.button:hover{
+    -fx-background-color: #808080;
+}
 .label {
-    -fx-font: 25px "Times New Roman";
+    -fx-font: 50px "Times New Roman";
     -fx-text-fill: white;
 }

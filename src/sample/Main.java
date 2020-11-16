@@ -35,15 +35,16 @@ public class Main extends Application {
         mainPane.setLeft(BorderPaneMenus.leftMenu());
         mainPane.setRight(BorderPaneMenus.rightMenu());
         mainPane.setTop(BorderPaneMenus.topMenu());
-        mainPane.setCenter(BorderPaneMenus.mainGrid());
+        mainPane.setBottom(BorderPaneMenus.bottomMenu());
+        mainPane.setCenter(BorderPaneMenus.mainGrid(mainPane));
 
 
-        scene = new Scene(mainPane, 800, 600);
+        scene = new Scene(mainPane, 1300, 800);
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+        window.setMaximized(true);
         window.setScene(scene);
         window.setTitle("Tic-Tac-Toe In Progress");
         window.show();
-
     }
 
     private void closeProgram(){
