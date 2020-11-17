@@ -19,7 +19,7 @@ import javafx.scene.control.Button;
 public class Main extends Application {
 
     Stage window;
-    Scene scene;
+    Scene scene, titleScene;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -41,8 +41,16 @@ public class Main extends Application {
 
         scene = new Scene(mainPane, 1300, 800);
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+
+        BorderPane titlePane = new BorderPane();
+        titlePane.setStyle("-fx-background-color : black;");
+        titlePane.setTop(BorderPaneMenus.TitleCard());
+        titlePane.setBottom(BorderPaneMenus.TitleButton(scene, window));
+        titleScene = new Scene(titlePane, 1300, 800);
+        titleScene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+
         window.setMaximized(true);
-        window.setScene(scene);
+        window.setScene(titleScene);
         window.setTitle("Tic-Tac-Toe In Progress");
         window.show();
     }

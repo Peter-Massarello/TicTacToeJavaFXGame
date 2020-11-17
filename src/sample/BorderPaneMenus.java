@@ -2,10 +2,12 @@ package sample;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
 public class BorderPaneMenus {
 
@@ -67,6 +69,35 @@ public class BorderPaneMenus {
         rightMenu.getChildren().add(player2);
 
         return rightMenu;
+    }
+
+    public static HBox TitleCard(){
+        HBox titlePane = new HBox();
+        Label title = new Label("TIC-TAC-TOE");
+        title.setPadding(new Insets(100));
+        title.setAlignment(Pos.CENTER);
+        Region region1 = new Region();
+        HBox.setHgrow(region1, Priority.ALWAYS);
+
+        Region region2 = new Region();
+        HBox.setHgrow(region2, Priority.ALWAYS);
+        titlePane.getChildren().addAll(region1, title, region2);
+
+        return titlePane;
+    }
+
+    public static HBox TitleButton(Scene scene,  Stage window){
+        HBox titleButtonPane = new HBox();
+        titleButtonPane.setPadding(new Insets(100));
+        Button btn = new Button("START");
+        btn.setOnAction(e -> {
+            window.setMaximized(false);
+            window.setScene(scene);
+            window.setMaximized(true);
+        });
+        titleButtonPane.getChildren().add(btn);
+        titleButtonPane.setAlignment(Pos.CENTER);
+        return titleButtonPane;
     }
 
     public static GridPane mainGrid(BorderPane mainPane){
